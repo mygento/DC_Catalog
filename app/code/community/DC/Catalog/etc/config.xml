@@ -26,13 +26,13 @@
     </modules>
     <frontend>
         <routers>
-         <attributeinfo>
-            <use>standard</use>
-            <args>
-               <module>DC_Catalog</module>
-               <frontName>attributeinfo</frontName>
-            </args>
-         </attributeinfo>
+            <attributeinfo>
+                <use>standard</use>
+                <args>
+                    <module>DC_Catalog</module>
+                    <frontName>attributeinfo</frontName>
+                </args>
+            </attributeinfo>
         </routers>
         <translate>
             <modules>
@@ -43,27 +43,27 @@
                 </DC_Catalog>
             </modules>
         </translate>
-      <layout>
-          <updates>
-              <dc_catalog>
-                  <file>dc_catalog.xml</file>
-              </dc_catalog>
-          </updates>
-      </layout>
+        <layout>
+            <updates>
+                <dc_catalog>
+                    <file>dc_catalog.xml</file>
+                </dc_catalog>
+            </updates>
+        </layout>
     </frontend>
 
-	<admin>
-		<routers>
-    	   <adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
                 <use>admin</use>
                 <args>
                     <modules>
-		         		<DC_Catalog before="Mage_Adminhtml">DC_Catalog_Admin</DC_Catalog>
-		       		</modules>
+                        <DC_Catalog before="Mage_Adminhtml">DC_Catalog_Admin</DC_Catalog>
+                    </modules>
                 </args>
-		   </adminhtml>
-	     </routers>
-	</admin>
+            </adminhtml>
+        </routers>
+    </admin>
 
     <global>
         <models>
@@ -101,7 +101,9 @@
             </dc_catalog_read>
         </resources>
         <blocks>
-            <dc_catalog><class>DC_Catalog_Block</class></dc_catalog>
+            <dc_catalog>
+                <class>DC_Catalog_Block</class>
+            </dc_catalog>
         </blocks>
         <helpers>
             <dc_catalog>
@@ -134,20 +136,20 @@
             </modules>
         </translate>
         <menu>
-             <cms translate="title" module="cms">
+            <cms translate="title" module="cms">
                 <children>
                     <manufacturers translate="title" module="dc_catalog">
                         <title>Attribute Info Pages</title>
                         <action>adminhtml/manufacturer</action>
                     </manufacturers>
                 </children>
-             </cms>
+            </cms>
         </menu>
         <acl>
             <resources>
                 <admin>
                     <children>
-                       <cms>
+                        <cms>
                             <children>
                                 <manufacturers translate="title">
                                     <title>Attribute Info Pages</title>
@@ -155,18 +157,18 @@
                                 </manufacturers>
                             </children>
                         </cms>
-						<system>
-							<children>
-								<config>
-									<children>
-										<dc_catalog translate="title" module="dc_catalog">
-											<title>Attribute Info Pages</title>
-											<sort_order>41</sort_order>
-										</dc_catalog>
-									</children>
-								</config>
-							</children>
-						</system>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <dc_catalog translate="title" module="dc_catalog">
+                                            <title>Attribute Info Pages</title>
+                                            <sort_order>41</sort_order>
+                                        </dc_catalog>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
                     </children>
                 </admin>
             </resources>
