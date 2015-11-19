@@ -28,36 +28,37 @@
 <layout version="0.1.0">
     <dc_catalog_attributeinfo>
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
         </reference>
-        
+
         <reference name="left">
-            <block type="dc_catalog/layer_view" name="catalog.leftnav" after="currency" template="catalog/layer/view.phtml"/>
-            <block type="dc_catalog/list_favorites" name="list_favs_block" template="dc_catalog/list/favorites_block.phtml">
-            	<!-- action method="setDefaultAttributeCode"><value>manufacturer</value></action> < !- - if no attribute code specified -->
+            <block after="currency" name="catalog.leftnav" template="catalog/layer/view.phtml" type="dc_catalog/layer_view"/>
+            <block name="list_favs_block" template="dc_catalog/list/favorites_block.phtml" type="dc_catalog/list_favorites">
+                <!-- action method="setDefaultAttributeCode"><value>manufacturer</value></action> < !- - if no attribute code specified -->
             </block>
         </reference>
 
-
         <reference name="content">
-            <block type="dc_catalog/attributeInfo" name="attributeinfo" as="attributeinfo" template="dc_catalog/attributeinfo.phtml">
+            <block as="attributeinfo" name="attributeinfo" template="dc_catalog/attributeinfo.phtml" type="dc_catalog/attributeInfo">
 
-            	<!-- 
+                <!--
             		you can hide the logo in the info page by removing the following block in the custom layout field using the syntax:
             		<reference name="attributeinfo">
 			            <remove name="attributeinfo.logo" />
-            		</reference>		
+            		</reference>
             	-->
-	            <block type="dc_catalog/attributeInfo" 
-	            	name="attributeinfo.logo" as="attributeinfo.logo"
-	            	template="dc_catalog/page/logo.phtml">
-	            	<action method="setImgAlign"><value>right</value></action>
-	            </block>
+                <block as="attributeinfo.logo" name="attributeinfo.logo" template="dc_catalog/page/logo.phtml" type="dc_catalog/attributeInfo">
+                    <action method="setImgAlign">
+                        <value>right</value>
+                    </action>
+                </block>
 
-                <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
+                <block name="product_list" template="catalog/product/list.phtml" type="catalog/product_list">
                     <!-- <action method="addReviewSummaryTemplate"><type>default</type><template>review/helper/su.phtml</template></action> -->
-                    <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
-                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    <block name="product_list_toolbar" template="catalog/product/list/toolbar.phtml" type="catalog/product_list_toolbar">
+                        <block name="product_list_toolbar_pager" type="page/html_pager"/>
                         <!-- The following code shows how to set your own pager increments -->
                         <!--
                             <action method="setDefaultListPerPage"><limit>4</limit></action>
@@ -73,86 +74,136 @@
                             <action method="addPagerLimit" translate="label"><mode>grid</mode><limit>all</limit><label>All</label></action>
                         -->
                     </block>
-                    <action method="addColumnCountLayoutDepend"><layout>empty</layout><count>6</count></action>
-                    <action method="addColumnCountLayoutDepend"><layout>one_column</layout><count>5</count></action>
-                    <action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>4</count></action>
-                    <action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>
-                    <action method="addColumnCountLayoutDepend"><layout>three_columns</layout><count>3</count></action>
-                    <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+                    <action method="addColumnCountLayoutDepend">
+                        <layout>empty</layout>
+                        <count>6</count>
+                    </action>
+                    <action method="addColumnCountLayoutDepend">
+                        <layout>one_column</layout>
+                        <count>5</count>
+                    </action>
+                    <action method="addColumnCountLayoutDepend">
+                        <layout>two_columns_left</layout>
+                        <count>4</count>
+                    </action>
+                    <action method="addColumnCountLayoutDepend">
+                        <layout>two_columns_right</layout>
+                        <count>4</count>
+                    </action>
+                    <action method="addColumnCountLayoutDepend">
+                        <layout>three_columns</layout>
+                        <count>3</count>
+                    </action>
+                    <action method="setToolbarBlockName">
+                        <name>product_list_toolbar</name>
+                    </action>
                 </block>
-	            
+
             </block>
-            
+
         </reference>
     </dc_catalog_attributeinfo>
 
-
     <dc_catalog_attributeinfo_all>
         <reference name="root">
-            <action method="setTemplate"><template>page/1column.phtml</template></action>
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
         </reference>
-        
+
         <reference name="content">
-            <block type="dc_catalog/list_favorites" name="list_favs" template="dc_catalog/list/favorites.phtml">
-            	<action method="setColumns"><value>5</value></action>
+            <block name="list_favs" template="dc_catalog/list/favorites.phtml" type="dc_catalog/list_favorites">
+                <action method="setColumns">
+                    <value>5</value>
+                </action>
             </block>
-            
-            <block type="dc_catalog/list_all" name="list_all" template="dc_catalog/list/all.phtml">
+
+            <block name="list_all" template="dc_catalog/list/all.phtml" type="dc_catalog/list_all">
                 <!-- block type="dc_catalog/list_pager" name="toolbar" /-->
-            	<action method="setColumns"><value>5</value></action>
+                <action method="setColumns">
+                    <value>5</value>
+                </action>
             </block>
         </reference>
     </dc_catalog_attributeinfo_all>
 
-
-
     <catalog_product_view>
-        <reference name="product.info"> <!--   -->
-        
-			<block type="dc_catalog/product_attributes"
-				name="attributes.manufacturer" as="attributes.manufacturer"
-				template="dc_catalog/product/view/attribute.phtml">
-            	<action method="setAttributeCode"><value>manufacturer</value></action> <!-- process this attribute_code -->
-            	<action method="setImageOnly"><value>0</value></action> <!-- if true doesn't show if there is no image uploaded -->
-            	<action method="setTextOnly"><value>0</value></action> <!-- if true shows only text, no matter if there is a logo -->
-            	<action method="setImgResizeTo"><value>0</value></action> <!-- eg. 75x60 or 75x or x60 - resize image to be maximum [width]x[height] -->
-            	<action method="setImgAlign"><value>right</value></action> 
-            	<action method="setBannerResizeTo"><value>0</value></action> <!-- eg. 75x60 or 75x or x60 - resize banner to be maximum [width]x[height] -->
-            	<action method="setBannerAlign"><value>block</value></action> 
-	            	<!-- logo/banner align: 
-	            		if = block then displays the image as a link with 
-	            		style="display:block; background:url('') no-repeat top center; height: [height of img]px" 
-	            	-->
-			</block>
-			
-			<block type="dc_catalog/product_attributes"
-				name="attributes.brand" as="attributes.brand"
-				template="dc_catalog/product/view/attribute.phtml">
-            	<action method="setAttributeCode"><value>brand</value></action>
-			</block>
+        <reference name="product.info">
+            <!--   -->
 
-			<!-- example for a multiple select attribute which will display a list of authors separated by comma -->
-			<block type="dc_catalog/product_attributes"
-				name="attributes.authors" as="attributes.authors"
-				template="dc_catalog/product/view/attribute.phtml">
-            	<action method="setAttributeCode"><value>authors</value></action>
-            	<action method="setImageOnly"><value>0</value></action>
-            	<action method="setImgAlign"><value>none</value></action> 
-            	<action method="setSeparator"><value><![CDATA[, ]]></value></action> 
-			</block>
-		</reference>
-	</catalog_product_view>
+            <block as="attributes.manufacturer" name="attributes.manufacturer" template="dc_catalog/product/view/attribute.phtml" type="dc_catalog/product_attributes">
+                <action method="setAttributeCode">
+                    <value>manufacturer</value>
+                </action>
+                <!-- process this attribute_code -->
+                <action method="setImageOnly">
+                    <value>0</value>
+                </action>
+                <!-- if true doesn't show if there is no image uploaded -->
+                <action method="setTextOnly">
+                    <value>0</value>
+                </action>
+                <!-- if true shows only text, no matter if there is a logo -->
+                <action method="setImgResizeTo">
+                    <value>0</value>
+                </action>
+                <!-- eg. 75x60 or 75x or x60 - resize image to be maximum [width]x[height] -->
+                <action method="setImgAlign">
+                    <value>right</value>
+                </action>
+                <action method="setBannerResizeTo">
+                    <value>0</value>
+                </action>
+                <!-- eg. 75x60 or 75x or x60 - resize banner to be maximum [width]x[height] -->
+                <action method="setBannerAlign">
+                    <value>block</value>
+                </action>
+                <!-- logo/banner align:
+	            		if = block then displays the image as a link with
+	            		style="display:block; background:url('') no-repeat top center; height: [height of img]px"
+	            	-->
+            </block>
+
+            <block as="attributes.brand" name="attributes.brand" template="dc_catalog/product/view/attribute.phtml" type="dc_catalog/product_attributes">
+                <action method="setAttributeCode">
+                    <value>brand</value>
+                </action>
+            </block>
+
+            <!-- example for a multiple select attribute which will display a list of authors separated by comma -->
+            <block as="attributes.authors" name="attributes.authors" template="dc_catalog/product/view/attribute.phtml" type="dc_catalog/product_attributes">
+                <action method="setAttributeCode">
+                    <value>authors</value>
+                </action>
+                <action method="setImageOnly">
+                    <value>0</value>
+                </action>
+                <action method="setImgAlign">
+                    <value>none</value>
+                </action>
+                <action method="setSeparator">
+                    <value>
+                        <![CDATA[, ]]>
+                    </value>
+                </action>
+            </block>
+        </reference>
+    </catalog_product_view>
 
     <catalog_category_layered>
         <reference name="category.products">
-			<block type="dc_catalog/product_attributes"
-				name="attributes.manufacturer" as="attributes.manufacturer"
-				template="dc_catalog/product/view/attribute.phtml">
-            	<action method="setAttributeCode"><value>manufacturer</value></action>
-            	<action method="setImgResizeTo"><value>75x40</value></action>
-            	<action method="setImgAlign"><value>none</value></action> 
-			</block>
-		</reference>
-	</catalog_category_layered>
-	
+            <block as="attributes.manufacturer" name="attributes.manufacturer" template="dc_catalog/product/view/attribute.phtml" type="dc_catalog/product_attributes">
+                <action method="setAttributeCode">
+                    <value>manufacturer</value>
+                </action>
+                <action method="setImgResizeTo">
+                    <value>75x40</value>
+                </action>
+                <action method="setImgAlign">
+                    <value>none</value>
+                </action>
+            </block>
+        </reference>
+    </catalog_category_layered>
+
 </layout>

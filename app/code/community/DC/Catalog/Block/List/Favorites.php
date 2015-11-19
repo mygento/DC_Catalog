@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Dot Collective - Magento Output 2009
  * Find more about Attribute Info Pages:
@@ -18,6 +19,7 @@
  */
 class DC_Catalog_Block_List_Favorites extends DC_Catalog_Block_List_All
 {
+
     /**
      * @return DC_Catalog_Model_Mysql4_Manufacturer_Collection
      */
@@ -25,30 +27,20 @@ class DC_Catalog_Block_List_Favorites extends DC_Catalog_Block_List_All
     {
         if (null === $this->_valuesCollection) {
 
-	        //the attribute value collection
-	        $this->_valuesCollection = Mage::getModel('dc_catalog/manufacturer')->getCollection();
+            //the attribute value collection
+            $this->_valuesCollection = Mage::getModel('dc_catalog/manufacturer')->getCollection();
 
-	        //set the store id and the main category from the store
-	        $this->_valuesCollection
-	        	->addStoreFilter(Mage::app()->getStore()->getId(), true)
-	        	->addAttributeCodeFilter($this->getAttributeCode())
-	        	->addFavoritesFilter()
-	        	->addEnabledFilter();
+            //set the store id and the main category from the store
+            $this->_valuesCollection
+                ->addStoreFilter(Mage::app()->getStore()->getId(), true)
+                ->addAttributeCodeFilter($this->getAttributeCode())
+                ->addFavoritesFilter()
+                ->addEnabledFilter();
 
-	        if ($randomize) {
-		        $this->_valuesCollection->randomize();
-	        }
+            if ($randomize) {
+                $this->_valuesCollection->randomize();
+            }
         }
         return $this->_valuesCollection;
     }
-
-    protected function _toHtml()
-    {
-        /*if ($toolbar = $this->getChild('toolbar')) {
-            $toolbar->setCollection($this->getValuesCollection());
-        }*/
-
-        return parent::_toHtml();
-    }
-
 }

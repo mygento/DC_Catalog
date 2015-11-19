@@ -1,0 +1,14 @@
+slider
+<?php
+$items = $this->getValuesCollection()->retrieveAll()->getItems();
+//Mage::getModel('dc_catalog/AttributeInfo')->load($this->getAttributePageId());
+if (count($_items)):
+
+    ?>
+    <div class="attribute-values-all">
+        <h3><?php echo __('All ' . $this->getAttributeCode()) ?></h3>
+        <?php
+        foreach ($items as $item) {
+
+        }
+    endif;
