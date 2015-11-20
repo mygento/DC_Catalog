@@ -31,13 +31,13 @@ class DC_Catalog_Block_Slider extends Mage_Core_Block_Template
         if (null === $this->_valuesCollection) {
             //the attribute value collection
             $this->_valuesCollection = Mage::getModel('dc_catalog/manufacturer')->getCollection();
-            echo $this->getAttributeCode();
+            //echo $this->getAttributeCode();
             //set the store id and the main category from the store
             $this->_valuesCollection
                 ->addStoreFilter(Mage::app()->getStore()->getId(), true)
                 ->addAttributeCodeFilter($this->getAttributeCode())
-                ->addFieldToFilter('image', array('neq' =>'NULL'))
-                ->addEnabledFilter();
+            //->addFieldToFilter('image', array('neq' =>'NULL'))
+            ->addEnabledFilter();
         }
         return $this->_valuesCollection;
     }
