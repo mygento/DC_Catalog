@@ -33,10 +33,10 @@ if (!count($items) > 0) {
 	        title="' . $this->htmlEscape($item->getValue()) . '"
 	        />';
             if ($imgHtml) {
-                echo '<a style="display:block;float:left;height:100%;min-height:1px" href="' . $this->getUrl('/') . $item->getAttributeCode() . '/' . $item->getIdentifier() . '" title="' . $item->getName() . '">' . $imgHtml . '</a>';
+                echo '<a style="display:block;float:left;height:100%;min-height:1px;margin:10px" href="' . $this->getUrl('/') . $item->getAttributeCode() . '/' . $item->getIdentifier() . '" title="' . $item->getName() . '">' . $imgHtml . '</a>';
             }
         } else {
-            echo '<a style="display:block;float:left;height:100%;min-height:1px" href="' . $this->getUrl('/') . $item->getAttributeCode() . '/' . $item->getIdentifier() . '" title="' . $item->getName() . '">' . $item->getValue() . '</a>';
+            echo '<a style="display:block;float:left;height:100%;min-height:1px;margin:10px" href="' . $this->getUrl('/') . $item->getAttributeCode() . '/' . $item->getIdentifier() . '" title="' . $item->getName() . '">' . $item->getValue() . '</a>';
         }
     }
 
