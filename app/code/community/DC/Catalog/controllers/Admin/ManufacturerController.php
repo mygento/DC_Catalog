@@ -207,6 +207,6 @@ class DC_Catalog_Admin_ManufacturerController extends Mage_Adminhtml_Controller_
      */
     protected function _isAllowed()
     {
-        return Mage::getSingleton('admin/session')->isAllowed('dc_catalog/manufacturer');
+        return Mage::getSingleton('admin/session')->isAllowed('cms/manufacturers');
     }
 }
