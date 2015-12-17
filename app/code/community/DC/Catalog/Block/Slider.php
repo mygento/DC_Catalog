@@ -36,8 +36,11 @@ class DC_Catalog_Block_Slider extends Mage_Core_Block_Template
             $this->_valuesCollection
                 ->addStoreFilter(Mage::app()->getStore()->getId(), true)
                 ->addAttributeCodeFilter($this->getAttributeCode())
-                ->addFieldToFilter('image', array('neq' =>'NULL'))
-            ->addEnabledFilter();
+                ->addFieldToFilter('image', array('neq' => 'NULL'))
+                ->addEnabledFilter()
+                ->getSelect()
+                ->reset(Zend_Db_Select::ORDER)
+                ->order('favorite asc');
         }
         return $this->_valuesCollection;
     }
