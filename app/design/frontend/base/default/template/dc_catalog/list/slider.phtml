@@ -8,23 +8,13 @@ if (!count($items) > 0) {
 ?>
 <div class="attribute-slider-items">
     <?php
-    $_imgHtml = '';
     $thumbnail_width = 113;
     $thumbnail_height = 113;
     foreach ($items as $item) {
         if (($file = Mage::getBaseDir('media') . DS . 'catalog' . DS . 'attribute' . DS . $item->getImage()) && is_file($file)) {
-            $imageInfo = getimagesize($file);
-            $width = $imageInfo[0];
-            $height = $imageInfo[1];
 
             $baseDir = Mage::getSingleton('catalog/product_media_config')->getBaseMediaPath();
 
-            if ($height) {
-                $thumbnail_width = min($thumbnail_width, intval($width * $thumbnail_height / $height));
-            }
-            if ($width) {
-                $thumbnail_height = min($thumbnail_height, intval($height * $thumbnail_width / $width));
-            }
             $imgUrl = Mage::helper('dc_catalog/image')
                 ->initImage($this->getAttributeCode(), $item->getImage())
                 ->resize($thumbnail_width, $thumbnail_height)
