@@ -31,10 +31,12 @@ $columns = 5;
 
                                 $baseDir = Mage::getSingleton('catalog/product_media_config')->getBaseMediaPath();
 
-                                if ($height)
+                                if ($height) {
                                     $thumbnail_width = min($thumbnail_width, intval($width * $thumbnail_height / $height));
-                                if ($width)
+                                }
+                                if ($width) {
                                     $thumbnail_height = min($thumbnail_height, intval($height * $thumbnail_width / $width));
+                                }
 
 
                                 //resizer looks in /media/catalog/product, our images are in /media/catalog/attribute
@@ -58,25 +60,24 @@ $columns = 5;
                                 ?><a
                                     href="<?php echo $this->getUrl('/') . $item->getAttributeCode() . '/' . $item->getIdentifier(); ?>"
                                     title="<?php echo $item->getName() ?>"><?php
-                                    echo $_imgHtml;
+                                        echo $_imgHtml;
 
-                                    ?></a><?php
-                }
+                                        ?></a><?php
+                            }
 
-                ?>
-                            <a
-                                href="<?php echo $this->getUrl('/') . $item->getAttributeCode() . '/' . $item->getIdentifier(); ?>"
+                            ?>
+                            <a href="<?php echo $this->getUrl('/') . $item->getAttributeCode() . '/' . $item->getIdentifier(); ?>"
                                 title="<?php echo $this->htmlEscape($item->getName()) ?>"><?php
-                        echo $item->getValue();
+                                    echo $item->getValue();
 
-                                ?></a>
+                                    ?></a>
                         </td>
 
                         <?php if (0 == ( ++$i % $columns)) : ?>
                         </tr><tr>
-        <?php endif; ?>
+                        <?php endif; ?>
 
-    <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </tr>
             </tbody>
         </table>
