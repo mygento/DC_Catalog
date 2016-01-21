@@ -24,6 +24,14 @@
             <version>0.2.1</version>
         </DC_Catalog>
     </modules>
+    <default>
+        <dc_catalog>
+            <attributes>
+                <favorite>0</favorite>
+                <logo>0</logo>
+            </attributes>
+        </dc_catalog>
+    </default>
     <frontend>
         <routers>
             <attributeinfo>

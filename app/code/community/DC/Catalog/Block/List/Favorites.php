@@ -20,6 +20,14 @@
 class DC_Catalog_Block_List_Favorites extends DC_Catalog_Block_List_All
 {
 
+    public function _toHtml()
+    {
+        if(!Mage::getStoreConfig('dc_catalog/attributes/favorite')){
+            return '';
+        }
+        return parent::_toHtml();
+    }
+
     /**
      * @return DC_Catalog_Model_Mysql4_Manufacturer_Collection
      */
