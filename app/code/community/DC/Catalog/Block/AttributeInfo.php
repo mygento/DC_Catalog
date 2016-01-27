@@ -56,12 +56,11 @@ class DC_Catalog_Block_AttributeInfo extends Mage_Core_Block_Template
                 'link' => Mage::getBaseUrl()
                 )
             );
-
+            $label = mb_convert_case($attributeInfo->getAttributeCode(), MB_CASE_TITLE, "UTF-8");
             $breadcrumbs->addCrumb('allvalues', array(
-                'label' => Mage::helper('dc_catalog')->__(ucfirst($attributeInfo->getAttributeCode()) . 's'),
+                'label' => Mage::helper('dc_catalog')->__($label),
                 'link' => Mage::getUrl('' . $attributeInfo->getAttributeCode() . '/'),
             ));
-
 
             $breadcrumbs->addCrumb('dc_catalog', array('label' => $attributeInfo->getValue(), 'title' => $attributeInfo->getValue()));
         }

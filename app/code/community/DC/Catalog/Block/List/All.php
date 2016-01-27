@@ -24,36 +24,6 @@ class DC_Catalog_Block_List_All extends Mage_Core_Block_Template
     protected $_valuesCollection;
     protected $_attributeCode = null;
 
-    /*
-      protected function _prepareLayout()
-      {
-      //$attribute = Mage::getSingleton('eav/config')->getAttribute('catalog_product', $attributeCode);
-      $attributeCode = Mage::registry('attribute_code');
-      $attributeModel = Mage::getSingleton('catalog/resource_eav_attribute');
-      $attributeModel->load($attributeCode, 'attribute_code');
-      var_export($attributeModel);
-
-
-      // show breadcrumbs
-      if (Mage::getStoreConfig('web/default/show_cms_breadcrumbs')
-      && ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs'))) {
-
-      $breadcrumbs->addCrumb(
-      'home',
-      array(
-      'label'=>Mage::helper('dc_catalog')->__('Home'),
-      'title'=>Mage::helper('dc_catalog')->__('Go to Home Page'),
-      'link'=>Mage::getBaseUrl()
-      )
-      );
-      $attributeCode = Mage::registry('attribute_code');
-
-      $breadcrumbs->addCrumb('allvalues', array(
-      'label' => Mage::helper('dc_catalog')->__(ucfirst($attributeCode).'s'),
-      ));
-      }
-      }
-     */
 
     public function getAttributeCode()
     {

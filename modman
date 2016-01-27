@@ -3,3 +3,5 @@ app/design/frontend/base/default/layout/dc_catalog.xml app/design/frontend/base/
 app/design/frontend/base/default/template/dc_catalog app/design/frontend/base/default/template/dc_catalog
 app/etc/modules/DC_Catalog.xml app/etc/modules/DC_Catalog.xml
 app/locale/en_US/DC_Catalog.csv app/locale/en_US/DC_Catalog.csv
+app/locale/ro_RO/DC_Catalog.csv app/locale/ro_RO/DC_Catalog.csv
+app/locale/ru_RU/DC_Catalog.csv app/locale/ru_RU/DC_Catalog.csv
