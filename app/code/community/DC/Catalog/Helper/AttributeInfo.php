@@ -285,6 +285,7 @@ class DC_Catalog_Helper_AttributeInfo extends Mage_Core_Helper_Abstract
             }
             $breadcrumbs->addCrumb('allvalues', array(
                 'label' => Mage::helper('dc_catalog')->__($label),
+                'link'  => '',
             ));
         }
 
