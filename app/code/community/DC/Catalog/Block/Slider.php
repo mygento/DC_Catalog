@@ -10,6 +10,11 @@ class DC_Catalog_Block_Slider extends Mage_Core_Block_Template
     {
         $this->setTemplate('dc_catalog/list/slider.phtml');
     }
+    
+    public function getCacheLifetime()
+    {
+        return 86400;
+    }
 
     public function getAttributeCode()
     {
