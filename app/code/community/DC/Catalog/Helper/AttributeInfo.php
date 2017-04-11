@@ -265,28 +265,35 @@ class DC_Catalog_Helper_AttributeInfo extends Mage_Core_Helper_Abstract
           ->applyTemplate($attributeInfo->getRootTemplate());
           } */
 
-        // show breadcrumbs
-        if (Mage::getStoreConfig('web/default/show_cms_breadcrumbs') && ($breadcrumbs = $action->getLayout()->getBlock('breadcrumbs'))) {
+        $attributeCode = Mage::registry('attribute_code');
 
-            $breadcrumbs->addCrumb(
-                'home', array(
-                'label' => Mage::helper('dc_catalog')->__('Home'),
-                'title' => Mage::helper('dc_catalog')->__('Go to Home Page'),
-                'link' => Mage::getBaseUrl()
-                )
-            );
-            $attributeCode = Mage::registry('attribute_code');
-
-            $attribute = Mage::getSingleton('eav/config')->getAttribute('catalog_product', $attributeCode);
+        if($attributeCode) {
+            $attribute = Mage::getSingleton('eav/config')->getAttribute('catalog_product',
+                $attributeCode);
             if (is_array($labels = $attribute->getStoreLabels()) && (isset($labels[Mage::app()->getStore()->getId()]))) {
                 $label = $labels[Mage::app()->getStore()->getId()];
             } else {
                 $label = $attribute->getFrontendLabel();
             }
-            $breadcrumbs->addCrumb('allvalues', array(
-                'label' => Mage::helper('dc_catalog')->__($label),
-                'link'  => '',
-            ));
+
+            $action->getLayout()->getBlock('head')->setTitle($this->__($label));
+
+            // show breadcrumbs
+            if (Mage::getStoreConfig('web/default/show_cms_breadcrumbs') && ($breadcrumbs = $action->getLayout()->getBlock('breadcrumbs'))) {
+
+                $breadcrumbs->addCrumb(
+                    'home', array(
+                        'label' => Mage::helper('dc_catalog')->__('Home'),
+                        'title' => Mage::helper('dc_catalog')->__('Go to Home Page'),
+                        'link' => Mage::getBaseUrl()
+                    )
+                );
+
+                $breadcrumbs->addCrumb('allvalues', array(
+                    'label' => Mage::helper('dc_catalog')->__($label),
+                    'link'  => '',
+                ));
+            }
         }
 
         if ($storage = Mage::getSingleton('catalog/session')) {
