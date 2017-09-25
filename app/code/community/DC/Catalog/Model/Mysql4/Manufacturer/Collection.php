@@ -54,7 +54,7 @@ class DC_Catalog_Model_Mysql4_Manufacturer_Collection extends Mage_Core_Model_My
                 'concat(a.attribute_code, ao.option_id, \'store\', aov.store_id) as false_id'
             ))
             ->where('a.attribute_code IN (?)', $allowedAttributes)
-            ->where('`aov`.`store_id` != ?', Mage_Core_Model_App::ADMIN_STORE_ID)
+            //->where('`aov`.`store_id` != ?', Mage_Core_Model_App::ADMIN_STORE_ID)
             ->where('SUBSTRING(aov.value,1,1) != \'-\'')
             ->order('value');
 
