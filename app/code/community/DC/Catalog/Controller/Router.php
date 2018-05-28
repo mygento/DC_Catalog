@@ -88,6 +88,10 @@ class DC_Catalog_Controller_Router extends Mage_Core_Controller_Varien_Router_Ab
 					return true;
 	        	//}
 	        }
+		
+		if($identifier) {
+                    return false;
+            	}
 
 
 	        //well.. just display all the values
